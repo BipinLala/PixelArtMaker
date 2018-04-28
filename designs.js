@@ -4,6 +4,7 @@
 // When size is submitted by the user, call makeGrid()
 //declaring the variables
 let inputHeight, inputWidth, penColor, grid, drag = false;
+var timerID;
 
 $('#submit1').click(function (e) {
     e.preventDefault();                         //preventing default form submit behaviour
@@ -16,6 +17,16 @@ $('#submit1').click(function (e) {
     grid.children().remove();                   //Reset the canvas on submit click
     $('#randomSec').text("Funk It Up!");
     $('#randomFill').text("Randomize Grid!");
+    $('#submit1').toggleClass('reset');
+    clearInterval(timerID);
+
+    if ($('#submit1').hasClass('reset')) {
+        $('#submit1').text('Reset Grid!');
+    }
+
+    else {
+        $('#submit1').text('Make Grid!');
+    }
     // clearInterval(inter);
     makeGrid();
 });
@@ -75,6 +86,7 @@ function colorCells() {
 
 $('#colorPicker').on('change', function (e) {
     
+    clearInterval(timerID);
     penColor = $('#colorPicker').val();
 });
 
@@ -83,7 +95,13 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
-  
+
+  $('#erase').on('click', function (e) {
+      e.preventDefault();
+      clearInterval(timerID);
+      penColor = 'white';
+  })
+
   $('#randomSec').on('click', function (e) {
       e.preventDefault();
       $('#randomSec').text("Now Click and Drag");
@@ -95,6 +113,7 @@ function getRandomInt(min, max) {
     $('#randomFill').text("Enjoy Art!");
     randomArt();
 });
+
 
   function randomArt(){
 	grid.find('td').each(function(){
@@ -109,7 +128,7 @@ function getRandomInt(min, max) {
 
 function startRandomFill() {
     
-   var inter =  setInterval(function() {
+    timerID =  setInterval(function() {
         var element = document.querySelector("box");
         var r = getRandomInt(0, 255);
         var g = getRandomInt(0, 255);
