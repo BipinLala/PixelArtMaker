@@ -4,29 +4,128 @@
 }
 
 @font-face {
-    font-family: FFMarkRegular;
+    font-family: Funky;
     src: url('../fonts/FunkyRundkopfTwoNF.otf')
 }
 
+/* .container{
+    width: 95%;
+    margin: auto;
+    overflow: hidden;
+  } */
+
 body {
-    text-align: center;
+    /* text-align: center; */
+
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
+    text-align: center;
     min-height: 40px;
-    background-color: rgb(23, 113, 197);
-    border-bottom: deeppink 3px solid;
+    background-color:dodgerblue;
+    border-bottom: deeppink 4px solid;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 h1 {
     
-    font-family: 'FFMarkRegular','Press Start 2P';
+    font-family: 'Funky','Press Start 2P';
     font-size: 50px;
     margin: 0 0.2em 0.2em 0.2em;
     color: white;
 }
+
+
+.leftNavbar {
+    display: flex;
+    min-height: calc(100vh - 74px);
+}
+
+.NavContainer {
+    padding:15px;
+    min-height: 100%;
+    width: 420px;
+    background-color: deeppink ;
+    border-right: 4px solid dodgerblue;
+}
+
+
+label{
+    color: white;
+    font-family: 'Press Start 2P';
+    /* font-weight: bold; */
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+
+.gridParams {   
+    padding-top: 10px;
+    text-align: center;
+}
+
+input[type=text], input[type=number], button{
+    text-align: center;
+    padding: 5px;
+    border: 0;
+    border-radius: 0;
+    background-color: rgb(97, 129, 160);
+    color: white;
+    font-family: 'Press Start 2P';
+    font-size: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+
+
+button {
+    border: 3px solid dodgerblue;
+}
+
+#submit1:hover, button:hover {
+    background-color: dodgerblue; 
+}
+
+.canvas {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top:35px;
+    background-color: mediumspringgreen;
+}
+
+input[type=color] {
+    width: 90%;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    margin-bottom: 150px;
+    
+}
+
+input:focus {
+    background-color: dodgerblue;
+}
+
+
+/* .showcase {
+    margin-top: 0px;
+    padding-top: 0px;
+    background: dodgerblue;
+    min-height: 80px;
+} */
+
+
 
 h2 {
     margin: 1em 0 0.25em;
@@ -55,6 +154,6 @@ td {
     width: 20px;
 }
 
-input[type=number] {
+/* input[type=number] {
     width: 6em;
-}
+} */

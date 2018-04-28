@@ -14,19 +14,22 @@ $('#submit1').click(function (e) {
     penColor = $('#colorPicker').val();
     grid = $('#pixelCanvas');
     grid.children().remove();                   //Reset the canvas on submit click
-
+    $('#randomSec').text("Funk It Up!");
+    $('#randomFill').text("Randomize Grid!");
+    // clearInterval(inter);
     makeGrid();
 });
 
 
-console.log(inputHeight);
-console.log(inputWidth);
-console.log(penColor);
+
+// console.log(inputHeight);
+// console.log(inputWidth);
+// console.log(penColor);
 
 
 
 
-function makeGrid() {
+function makeGrid() {                   // Making Grid
 
 // Your code goes here!
 
@@ -38,14 +41,14 @@ function makeGrid() {
         // creating columns/cells
         for(let c = 0; c < inputWidth; c++){
             
-            $('tr:last').append('<td class="cell"></td>')
+            $('tr:last').append('<td class="cell"></td>');
+            $('td').css('background-color', 'white');
 
         }
     }
 
     colorCells();
 }
-
 
 
 function colorCells() {
@@ -76,10 +79,47 @@ $('#colorPicker').on('change', function (e) {
 });
 
 
-$('#fill').click(function() {
-    table.children().find('td').css('background-color', color);
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  
+  
+  $('#randomSec').on('click', function (e) {
+      e.preventDefault();
+      $('#randomSec').text("Now Click and Drag");
+      startRandomFill();
   });
 
+  $('#randomFill').on('click', function (e) {
+    e.preventDefault();
+    $('#randomFill').text("Enjoy Art!");
+    randomArt();
+});
+
+  function randomArt(){
+	grid.find('td').each(function(){
+        var r = getRandomInt(0, 255);
+        var g = getRandomInt(0, 255);
+        var b = getRandomInt(0, 255);
+        
+        penColor = "rgb(" + r + "," + g + "," + b + ")";
+		$(this).css('background-color',penColor);
+	});
+}
+
+function startRandomFill() {
+    
+   var inter =  setInterval(function() {
+        var element = document.querySelector("box");
+        var r = getRandomInt(0, 255);
+        var g = getRandomInt(0, 255);
+        var b = getRandomInt(0, 255);
+        
+        penColor = "rgb(" + r + "," + g + "," + b + ")";
+        
+    }, 1000);
+}  
+  
 
 
 
