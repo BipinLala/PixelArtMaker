@@ -62,7 +62,7 @@ function makeGrid() {                   // Making Grid
 }
 
 
-function colorCells() {
+function colorCells() {                         // coloring and drag functionality
     
     grid.on('mousedown', 'td', function (e) {
          drag = true;
@@ -84,31 +84,32 @@ function colorCells() {
 }
 
 
-$('#colorPicker').on('change', function (e) {
+$('#colorPicker').on('change', function (e) {           // change colour value
     
     clearInterval(timerID);
+    $('#randomSec').text('Funk It Up!');
     penColor = $('#colorPicker').val();
 });
 
 
-function getRandomInt(min, max) {
+function getRandomInt(min, max) {                       // generate random colours
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
 
-  $('#erase').on('click', function (e) {
+  $('#erase').on('click', function (e) {                // erase tool
       e.preventDefault();
       clearInterval(timerID);
       penColor = 'white';
   })
 
-  $('#randomSec').on('click', function (e) {
+  $('#randomSec').on('click', function (e) {            // randomize pen colour for funk it up
       e.preventDefault();
       $('#randomSec').text("Now Click and Drag");
       startRandomFill();
   });
 
-  $('#randomFill').on('click', function (e) {
+  $('#randomFill').on('click', function (e) {           // randomize grid
     e.preventDefault();
     $('#randomFill').text("Enjoy Art!");
     randomArt();
